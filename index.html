@@ -54,15 +54,12 @@
 
 
 
-<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="如果意见一致听我的，否则听你的">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="如果意见一致听我的，否则听你的">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如果意见一致听我的，否则听你的">
-<meta name="twitter:description">
 
 
 
@@ -181,6 +178,169 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/22/config-ubuntu-nginx-rtmp/" itemprop="url">
+                  RxJava�ʼ�
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-22T23:20:03+08:00" content="2016-12-22">
+              2016-12-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/����/" itemprop="url" rel="index">
+                    <span itemprop="name">����</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/22/config-ubuntu-nginx-rtmp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/22/config-ubuntu-nginx-rtmp/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Ubuntu��Nginx-RTMP-�ֱ��������"><a href="#Ubuntu��Nginx-RTMP-�ֱ��������" class="headerlink" title="Ubuntu��Nginx RTMP �ֱ��������"></a>Ubuntu��Nginx RTMP �ֱ��������</h1><h3 id="׼��ffmpeg"><a href="#׼��ffmpeg" class="headerlink" title="׼��ffmpeg"></a>׼��ffmpeg</h3><ul>
+<li><p>��װffmpeg</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="meta">@ubuntu</span>:sudo apt-<span class="keyword">get</span> install ffmpeg</div></pre></td></tr></table></figure>
+</li>
+<li><p>�µ�UbuntuԴ���ҿ��ܲ���ffmpeg���򣬵���û��ϵ��������һ��ppa</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:mc3man/trusty-media</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install ffmpeg</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>��װ����ffmpeg ��ffplay�����Ͷ���ʹ������<code>ffmpeg</code>����������<code>ffmpeg</code>���ڲ���������Ƶ����</p>
+<h3 id="׼��Դ��"><a href="#׼��Դ��" class="headerlink" title="׼��Դ��"></a>׼��Դ��</h3><ul>
+<li><p>��Ҫ�ĳ���Դ��</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>��nginx</div><div class="line"><span class="number">2</span>��openssl</div><div class="line"><span class="number">3</span>��zlib</div><div class="line"><span class="number">4</span>��pcre</div><div class="line"><span class="number">5</span>�� nginx-rtmp-module</div></pre></td></tr></table></figure>
+</li>
+<li><p>�������ҽ�ѹ����</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tamas@ubuntu<span class="symbol">:~/Desktop/server</span>$ ls</div><div class="line">nginx-<span class="number">1.10</span>.<span class="number">2</span>       openssl-<span class="number">1.0</span>.<span class="number">2</span>j  zlib-<span class="number">1.2</span>.<span class="number">8</span></div><div class="line">nginx-rtmp-<span class="class"><span class="keyword">module</span>  <span class="title">pcre</span>-8.31</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="����Nginx"><a href="#����Nginx" class="headerlink" title="����Nginx"></a>����Nginx</h3><ul>
+<li><p>configure</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:~/Desktop/server/nginx-</span><span class="number">1.10</span>.<span class="number">2</span><span class="variable">$ </span>./configure --prefix=<span class="regexp">/usr/local</span><span class="regexp">/nginx --with-pcre=/home</span><span class="regexp">/tamas/</span>Desktop/server/pcre-<span class="number">8.31</span> --with-zlib=<span class="regexp">/home/tamas</span><span class="regexp">/Desktop/server</span><span class="regexp">/zlib-1.2.8 --with-openssl=/home</span><span class="regexp">/tamas/</span>Desktop/server/openssl-<span class="number">1.0</span>.<span class="number">2</span>j  --add-<span class="keyword">module</span>=<span class="regexp">/home/tamas</span><span class="regexp">/Desktop/server</span><span class="regexp">/nginx-rtmp-module</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>make &amp; make install</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:~/Desktop/server/nginx-</span><span class="number">1.10</span>.<span class="number">2</span><span class="variable">$ </span>make</div><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:~/Desktop/server/nginx-</span><span class="number">1.10</span>.<span class="number">2</span><span class="variable">$ </span>sudo make install</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>��ʱNginx��װ�� <code>/usr/local/nginx</code>Ŀ¼��</p>
+<h3 id="����Nginx-1"><a href="#����Nginx-1" class="headerlink" title="����Nginx"></a>����Nginx</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:/usr/local/nginx</span><span class="variable">$ </span>sudo gedit conf/nginx.conf</div></pre></td></tr></table></figure>
+<ul>
+<li><p>����nginx����</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="section">rtmp</span> &#123;  </div><div class="line">    <span class="section">server</span> &#123;  </div><div class="line">        <span class="attribute">listen</span> <span class="number">1935</span>;  </div><div class="line">  </div><div class="line">        <span class="attribute">application</span> myapp &#123;  </div><div class="line">            <span class="attribute">live</span> <span class="literal">on</span>;  </div><div class="line">        &#125;  </div><div class="line">        <span class="attribute">application</span> hls &#123;  </div><div class="line">            <span class="attribute">live</span> <span class="literal">on</span>;  </div><div class="line">            <span class="attribute">hls</span> <span class="literal">on</span>;  </div><div class="line">            <span class="attribute">hls_path</span> /tmp/hls;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>����hls֧�֣���http server ������һ��location����</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">location /hls &#123;  </div><div class="line">            types &#123;  </div><div class="line">                application/vnd.apple.mpegurl m3u8<span class="comment">;  </span></div><div class="line">                video/mp2t ts<span class="comment">;  </span></div><div class="line">            &#125;  </div><div class="line">            root /tmp<span class="comment">;  </span></div><div class="line">            add_header Cache-Control no-cache<span class="comment">;  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="����Nginx-2"><a href="#����Nginx-2" class="headerlink" title="����Nginx"></a>����Nginx</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:/usr/local/nginx/sbin</span><span class="variable">$ </span>sudo ./nginx</div></pre></td></tr></table></figure>
+<h3 id="����Nginx�Ƿ������ɹ�"><a href="#����Nginx�Ƿ������ɹ�" class="headerlink" title="����Nginx�Ƿ������ɹ�"></a>����Nginx�Ƿ������ɹ�</h3><ul>
+<li>������80�˿ں�1935�˿��Ƿ����������������˾������ɹ���<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">tamas@ubuntu:</span>$ netstat -lnt</div><div class="line">Active Internet connections (only servers)</div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State      </div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:<span class="number">1935</span>            <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:*               LISTEN     </div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:<span class="number">80</span>              <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:*               LISTEN     </div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">127.0</span><span class="meta">.1</span><span class="meta">.1</span>:<span class="number">53</span>            <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:*               LISTEN     </div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">127.0</span><span class="meta">.0</span><span class="meta">.1</span>:<span class="number">631</span>           <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:*               LISTEN     </div><div class="line">tcp6       <span class="number">0</span>      <span class="number">0</span> ::<span class="number">1</span>:<span class="number">631</span>                 :::*                    LISTEN</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="����������Z�l�"><a href="#����������Z�l�" class="headerlink" title="����������Ƶ�ļ�"></a>����������Ƶ�ļ�</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas@ubuntu:~$ ffmpeg -re -<span class="selector-tag">i</span> <span class="string">"/home/tamas/Desktop/silence.mp4"</span> -vcodec libx264 -vprofile baseline -acodec aac  -ar <span class="number">44100</span> -strict -<span class="number">2</span> -ac <span class="number">1</span> -f flv -s <span class="number">1280</span>x720 -<span class="selector-tag">q</span> <span class="number">10</span> rtmp:<span class="comment">//localhost:1935/hls/demo</span></div></pre></td></tr></table></figure>
+<p>���ھͿ��Բ����ˣ����ŵ�ַ��<code>http://localhost:80/hls/demo.m3u8</code></p>
+<h3 id="����������Z��"><a href="#����������Z��" class="headerlink" title="����������Ƶ��"></a>����������Ƶ��</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:</span><span class="variable">$ </span>ffplay <span class="symbol">http:</span>/<span class="regexp">/localhost:80/hls</span><span class="regexp">/demo.m3u8</span></div></pre></td></tr></table></figure>
+<p>�ο�<a href="http://blog.csdn.net/gubenpeiyuan/article/details/38089013" target="_blank" rel="external">http://blog.csdn.net/gubenpeiyuan/article/details/38089013</a></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -547,19 +707,19 @@
 <pre><code>mv hadoop-2.7.0 ~/app/hadoop
 </code></pre><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><pre><code>vim ~/.bashrc
 </code></pre><p>在末尾追加以下内容：</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Hadoop enviroment related</span></span><br><span class="line">HADOOP_HOME=~<span class="regexp">/app/hadoop</span></span><br><span class="line">export JAVA_HOME=<span class="regexp">/usr/lib</span><span class="regexp">/jvm/jdk</span>-<span class="number">8</span>-oracle-arm-vfp-hflt</span><br><span class="line">export PATH=$JAVA_HOME/<span class="symbol">bin:</span>$HADOOP_HOME/<span class="symbol">bin:</span>$HADOOP_HOME/<span class="symbol">sbin:</span>$PATH</span><br><span class="line">export CLASSPATH=$JAVA_HOME/<span class="class"><span class="keyword">lib</span></span></span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/jre/<span class="class"><span class="keyword">lib</span>:$&#123;<span class="title">CLASSPATH</span>&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Hadoop enviroment related</span></div><div class="line">HADOOP_HOME=~<span class="regexp">/app/hadoop</span></div><div class="line">export JAVA_HOME=<span class="regexp">/usr/lib</span><span class="regexp">/jvm/jdk</span>-<span class="number">8</span>-oracle-arm-vfp-hflt</div><div class="line">export PATH=$JAVA_HOME/<span class="symbol">bin:</span>$HADOOP_HOME/<span class="symbol">bin:</span>$HADOOP_HOME/<span class="symbol">sbin:</span>$PATH</div><div class="line">export CLASSPATH=$JAVA_HOME/<span class="class"><span class="keyword">lib</span></span></div><div class="line">export CLASSPATH=.:$JAVA_HOME/jre/<span class="class"><span class="keyword">lib</span>:$&#123;<span class="title">CLASSPATH</span>&#125;</span></div></pre></td></tr></table></figure>
 <p>其中    HADOOP_HOME=~/app/hadoop    是Hadoop二进制文件的存放目录</p>
 <h3 id="创建HDFS相关目录"><a href="#创建HDFS相关目录" class="headerlink" title="创建HDFS相关目录"></a>创建HDFS相关目录</h3><p>在 ~/hadoop 下创建 data  dfs  name  temp 四个目录，这四个目录在接下来的NameNode DataNode等配置的时候会用到</p>
-<p>注：  ~/app/hadoop 目录和 ~/hadoop 目录不是同一个目录。前者存放hadoop二进制文件，后者作为DateNode NameNode相关目录<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pi</span>@raspberrypi ~ $ ls ~/hadoop</span><br><span class="line"><span class="keyword">data</span>  dfs  <span class="keyword">name</span>  temp</span><br></pre></td></tr></table></figure></p>
+<p>注：  ~/app/hadoop 目录和 ~/hadoop 目录不是同一个目录。前者存放hadoop二进制文件，后者作为DateNode NameNode相关目录<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">pi</span>@raspberrypi ~ $ ls ~/hadoop</div><div class="line"><span class="keyword">data</span>  dfs  <span class="keyword">name</span>  temp</div></pre></td></tr></table></figure></p>
 <h3 id="配置DateNode和Namenode"><a href="#配置DateNode和Namenode" class="headerlink" title="配置DateNode和Namenode"></a>配置DateNode和Namenode</h3><p>进 入～/app/hadoop/etc/hadoop/ 目录 </p>
 <ul>
 <li>将core-site.xml内容替换成以下内容：</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="php"><span class="meta">&lt;?</span>xml-stylesheet type=<span class="string">"text/xsl"</span> href=<span class="string">"configuration.xsl"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span> </span><br><span class="line">        	<span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span> </span><br><span class="line">    		<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://localhost:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span> </span><br><span class="line">    		<span class="tag">&lt;<span class="name">description</span>&gt;</span>NameNode URI<span class="tag">&lt;/<span class="name">description</span>&gt;</span> </span><br><span class="line">  	<span class="tag">&lt;/<span class="name">property</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/pi/hadoop/temp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">description</span>&gt;</span>Abase for other temporary directories.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="php"><span class="meta">&lt;?</span>xml-stylesheet type=<span class="string">"text/xsl"</span> href=<span class="string">"configuration.xsl"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span> </div><div class="line">        	<span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span> </div><div class="line">    		<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://localhost:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span> </div><div class="line">    		<span class="tag">&lt;<span class="name">description</span>&gt;</span>NameNode URI<span class="tag">&lt;/<span class="name">description</span>&gt;</span> </div><div class="line">  	<span class="tag">&lt;/<span class="name">property</span>&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">        	<span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">        	<span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/pi/hadoop/temp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">description</span>&gt;</span>Abase for other temporary directories.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure>
 <ul>
 <li>将hdfs-site.xml内容替换成以下内容</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="php"><span class="meta">&lt;?</span>xml-stylesheet type=<span class="string">"text/xsl"</span> href=<span class="string">"configuration.xsl"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    		<span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   		 <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/pi/hadoop/name<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.datanode.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    		<span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/pi/hadoop/data<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="php"><span class="meta">&lt;?</span>xml-stylesheet type=<span class="string">"text/xsl"</span> href=<span class="string">"configuration.xsl"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    		<span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">   		 <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/pi/hadoop/name<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.datanode.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    		<span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/pi/hadoop/data<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="修改-～-app-hadoop-bin-hdfs"><a href="#修改-～-app-hadoop-bin-hdfs" class="headerlink" title="修改 ～/app/hadoop/bin/hdfs"></a><code>修改 ～/app/hadoop/bin/hdfs</code></h3><p>这也是在树莓派配置Hadoop与在x86机器配置<code>唯一的不同之处</code>，由于1代树莓派CPU为armv7 , 不支持JVM的server 模式，因此要修改～/app/hadoop/bin中一行脚本。</p>
 <p>在1.*版本的Hadoop，要修改的脚本在 {HADOOP_HOME}/conf/hadoop 文件中。</p>
 <pre><code>vim ～/app/hadoop/bin/hdfs
@@ -583,7 +743,7 @@ Exiting with status 0
 </code></pre><p>将前面的注释符去掉,后面填写jdk路径</p>
 <pre><code>export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 </code></pre><p>启动的时候JVM会提示，本地库有问题之类的提示，因为Hadoop官方的release的本地库是为x86cpu编译的，如果arm cpu的设备要运行本地库，需要我们自己用交叉编译工具重新编译本地库。暂且不用管它，只要在编程的时候不用对本地库有依赖的接口，目前我知道的是压缩文件会依赖本地库，其它大部分都不会依赖。</p>
-<p>执行 jps 命令，查看Hadoop相关进程<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pi<span class="variable">@raspberrypi</span> ~ <span class="variable">$ </span>jps</span><br><span class="line"><span class="number">3123</span> DataNode</span><br><span class="line"><span class="number">3460</span> Jps</span><br><span class="line"><span class="number">3028</span> NameNode</span><br><span class="line"><span class="number">3262</span> SecondaryNameNode</span><br></pre></td></tr></table></figure></p>
+<p>执行 jps 命令，查看Hadoop相关进程<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pi@raspberrypi ~ $ jps</div><div class="line"><span class="number">3123</span> DataNode</div><div class="line"><span class="number">3460</span> Jps</div><div class="line"><span class="number">3028</span> NameNode</div><div class="line"><span class="number">3262</span> SecondaryNameNode</div></pre></td></tr></table></figure></p>
 <p>至少会有 DataNode NameNode SecondaryNameNode 这三个进程在运行，如果少了任何一个都说明HDFS启动有错。</p>
 <p>如果成功，在浏览器输入 <a href="http://10.42.0.90:50070/" target="_blank" rel="external">http://&lt;树莓派IP&gt;:50070</a> 会出现如下画面</p>
 <p><img src="http://blogstatic.folkcat.com/20151111_raspi_hadoop_status.png-large" alt=""></p>
@@ -656,7 +816,7 @@ Exiting with status 0
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -664,7 +824,7 @@ Exiting with status 0
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
