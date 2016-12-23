@@ -70,7 +70,8 @@
 
 新的Ubuntu源里找可能不到ffmpeg程序，但是没关系可以添加一个ppa
 123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo a">
-<meta property="og:updated_time" content="2016-12-22T17:10:22.172Z">
+<meta property="og:image" content="http://blogstatic.folkcat.com/20161222_live_play.png-mid">
+<meta property="og:updated_time" content="2016-12-23T00:48:57.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下Nginx RTMP 搭建直播服务器">
 <meta name="twitter:description" content="Ubuntu下Nginx RTMP 搭建直播服务器准备ffmpeg
@@ -79,6 +80,7 @@
 
 新的Ubuntu源里找可能不到ffmpeg程序，但是没关系可以添加一个ppa
 123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo a">
+<meta name="twitter:image" content="http://blogstatic.folkcat.com/20161222_live_play.png-mid">
 
 
 
@@ -323,8 +325,9 @@
 </li>
 </ul>
 <h3 id="推流本地视频文件"><a href="#推流本地视频文件" class="headerlink" title="推流本地视频文件"></a>推流本地视频文件</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas@ubuntu:~$ ffmpeg -re -<span class="selector-tag">i</span> <span class="string">"/home/tamas/Desktop/silence.mp4"</span> -vcodec libx264 -vprofile baseline -acodec aac  -ar <span class="number">44100</span> -strict -<span class="number">2</span> -ac <span class="number">1</span> -f flv -s <span class="number">1280</span>x720 -<span class="selector-tag">q</span> <span class="number">10</span> rtmp:<span class="comment">//localhost:1935/hls/demo</span></div></pre></td></tr></table></figure>
-<p>现在就可以播放了，播放地址是<code>http://localhost:80/hls/demo.m3u8</code></p>
-<h3 id="播放网络视频流"><a href="#播放网络视频流" class="headerlink" title="播放网络视频流"></a>播放网络视频流</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:</span><span class="variable">$ </span>ffplay <span class="symbol">http:</span>/<span class="regexp">/localhost:80/hls</span><span class="regexp">/demo.m3u8</span></div></pre></td></tr></table></figure>
+<p>现在就可以播放了，播放地址是<code>http://localhost/hls/demo.m3u8</code></p>
+<h3 id="播放网络视频流"><a href="#播放网络视频流" class="headerlink" title="播放网络视频流"></a>播放网络视频流</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:</span><span class="variable">$ </span>ffplay <span class="symbol">http:</span>/<span class="regexp">/localhost/hls</span><span class="regexp">/demo.m3u8</span></div></pre></td></tr></table></figure>
+<p><img src="http://blogstatic.folkcat.com/20161222_live_play.png-mid" alt=""></p>
 <p>参考<a href="http://blog.csdn.net/gubenpeiyuan/article/details/38089013" target="_blank" rel="external">http://blog.csdn.net/gubenpeiyuan/article/details/38089013</a></p>
 
       
@@ -435,7 +438,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -443,7 +446,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
