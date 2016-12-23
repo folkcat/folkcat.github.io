@@ -54,33 +54,42 @@
 
 
 
-<meta name="description" content="Ubuntu下Nginx RTMP 搭建直播服务器准备ffmpeg
+<meta name="description" content="准备ffmpeg
 安装ffmpeg
 1tamas@ubuntu:sudo apt-get install ffmpeg
 
 新的Ubuntu源里找可能不到ffmpeg程序，但是没关系可以添加一个ppa
-123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo a">
+123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo apt-get install ffmpeg
+
+
+安">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu下Nginx RTMP 搭建直播服务器">
 <meta property="og:url" content="http://yoursite.com/2016/12/22/config-ubuntu-nginx-rtmp/index.html">
 <meta property="og:site_name" content="如果意见一致听我的，否则听你的">
-<meta property="og:description" content="Ubuntu下Nginx RTMP 搭建直播服务器准备ffmpeg
+<meta property="og:description" content="准备ffmpeg
 安装ffmpeg
 1tamas@ubuntu:sudo apt-get install ffmpeg
 
 新的Ubuntu源里找可能不到ffmpeg程序，但是没关系可以添加一个ppa
-123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo a">
+123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo apt-get install ffmpeg
+
+
+安">
 <meta property="og:image" content="http://blogstatic.folkcat.com/20161222_live_play.png-large">
 <meta property="og:image" content="http://7xo0xk.com1.z0.glb.clouddn.com/20161222_live_play_2.png-large">
-<meta property="og:updated_time" content="2016-12-23T01:11:28.540Z">
+<meta property="og:updated_time" content="2016-12-23T01:12:08.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下Nginx RTMP 搭建直播服务器">
-<meta name="twitter:description" content="Ubuntu下Nginx RTMP 搭建直播服务器准备ffmpeg
+<meta name="twitter:description" content="准备ffmpeg
 安装ffmpeg
 1tamas@ubuntu:sudo apt-get install ffmpeg
 
 新的Ubuntu源里找可能不到ffmpeg程序，但是没关系可以添加一个ppa
-123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo a">
+123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo apt-get install ffmpeg
+
+
+安">
 <meta name="twitter:image" content="http://blogstatic.folkcat.com/20161222_live_play.png-large">
 
 
@@ -285,7 +294,7 @@
       
 
       
-        <h1 id="Ubuntu下Nginx-RTMP-搭建直播服务器"><a href="#Ubuntu下Nginx-RTMP-搭建直播服务器" class="headerlink" title="Ubuntu下Nginx RTMP 搭建直播服务器"></a>Ubuntu下Nginx RTMP 搭建直播服务器</h1><h3 id="准备ffmpeg"><a href="#准备ffmpeg" class="headerlink" title="准备ffmpeg"></a>准备ffmpeg</h3><ul>
+        <h3 id="准备ffmpeg"><a href="#准备ffmpeg" class="headerlink" title="准备ffmpeg"></a>准备ffmpeg</h3><ul>
 <li><p>安装ffmpeg</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="meta">@ubuntu</span>:sudo apt-<span class="keyword">get</span> install ffmpeg</div></pre></td></tr></table></figure>
 </li>
@@ -499,7 +508,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu下Nginx-RTMP-搭建直播服务器"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu下Nginx RTMP 搭建直播服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备ffmpeg"><span class="nav-number">1.0.1.</span> <span class="nav-text">准备ffmpeg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备源码"><span class="nav-number">1.0.2.</span> <span class="nav-text">准备源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译Nginx"><span class="nav-number">1.0.3.</span> <span class="nav-text">编译Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Nginx"><span class="nav-number">1.0.4.</span> <span class="nav-text">配置Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Nginx"><span class="nav-number">1.0.5.</span> <span class="nav-text">启动Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查Nginx是否启动成功"><span class="nav-number">1.0.6.</span> <span class="nav-text">检查Nginx是否启动成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推流HLS本地视频文件"><span class="nav-number">1.0.7.</span> <span class="nav-text">推流HLS本地视频文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推流RTMP本地视频流"><span class="nav-number">1.0.8.</span> <span class="nav-text">推流RTMP本地视频流</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备ffmpeg"><span class="nav-number">1.</span> <span class="nav-text">准备ffmpeg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备源码"><span class="nav-number">2.</span> <span class="nav-text">准备源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译Nginx"><span class="nav-number">3.</span> <span class="nav-text">编译Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Nginx"><span class="nav-number">4.</span> <span class="nav-text">配置Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Nginx"><span class="nav-number">5.</span> <span class="nav-text">启动Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查Nginx是否启动成功"><span class="nav-number">6.</span> <span class="nav-text">检查Nginx是否启动成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推流HLS本地视频文件"><span class="nav-number">7.</span> <span class="nav-text">推流HLS本地视频文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推流RTMP本地视频流"><span class="nav-number">8.</span> <span class="nav-text">推流RTMP本地视频流</span></a></li></ol></div>
             
           </div>
         </section>
