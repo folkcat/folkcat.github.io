@@ -70,8 +70,9 @@
 
 新的Ubuntu源里找可能不到ffmpeg程序，但是没关系可以添加一个ppa
 123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo a">
-<meta property="og:image" content="http://blogstatic.folkcat.com/20161222_live_play.png-mid">
-<meta property="og:updated_time" content="2016-12-23T00:48:57.932Z">
+<meta property="og:image" content="http://blogstatic.folkcat.com/20161222_live_play.png-large">
+<meta property="og:image" content="http://7xo0xk.com1.z0.glb.clouddn.com/20161222_live_play_2.png-large">
+<meta property="og:updated_time" content="2016-12-23T01:11:28.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下Nginx RTMP 搭建直播服务器">
 <meta name="twitter:description" content="Ubuntu下Nginx RTMP 搭建直播服务器准备ffmpeg
@@ -80,7 +81,7 @@
 
 新的Ubuntu源里找可能不到ffmpeg程序，但是没关系可以添加一个ppa
 123sudo add-apt-repository ppa:mc3man/trusty-mediasudo apt-get updatesudo a">
-<meta name="twitter:image" content="http://blogstatic.folkcat.com/20161222_live_play.png-mid">
+<meta name="twitter:image" content="http://blogstatic.folkcat.com/20161222_live_play.png-large">
 
 
 
@@ -294,8 +295,8 @@
 </ul>
 <p>安装完后ffmpeg 和ffplay命令就都能使用啦。<code>ffmpeg</code>用于推流，<code>ffmpeg</code>用于播放网络视频流。</p>
 <h3 id="准备源码"><a href="#准备源码" class="headerlink" title="准备源码"></a>准备源码</h3><ul>
-<li><p>需要的程序源码</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、nginx</div><div class="line"><span class="number">2</span>、openssl</div><div class="line"><span class="number">3</span>、zlib</div><div class="line"><span class="number">4</span>、pcre</div><div class="line"><span class="number">5</span>、 nginx-rtmp-module</div></pre></td></tr></table></figure>
+<li><p>需要的程序源码，到他们各自的官方网站上下载</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nginx</div><div class="line">openssl</div><div class="line">zlib</div><div class="line">pcre</div><div class="line">nginx-rtmp-<span class="class"><span class="keyword">module</span></span></div></pre></td></tr></table></figure>
 </li>
 <li><p>如下是我解压后的</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tamas@ubuntu<span class="symbol">:~/Desktop/server</span>$ ls</div><div class="line">nginx-<span class="number">1.10</span>.<span class="number">2</span>       openssl-<span class="number">1.0</span>.<span class="number">2</span>j  zlib-<span class="number">1.2</span>.<span class="number">8</span></div><div class="line">nginx-rtmp-<span class="class"><span class="keyword">module</span>  <span class="title">pcre</span>-8.31</span></div></pre></td></tr></table></figure>
@@ -324,11 +325,25 @@
 <li>如果有80端口和1935端口是否开启，如果开启了就启动成功了<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">tamas@ubuntu:</span>$ netstat -lnt</div><div class="line">Active Internet connections (only servers)</div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State      </div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:<span class="number">1935</span>            <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:*               LISTEN     </div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:<span class="number">80</span>              <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:*               LISTEN     </div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">127.0</span><span class="meta">.1</span><span class="meta">.1</span>:<span class="number">53</span>            <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:*               LISTEN     </div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">127.0</span><span class="meta">.0</span><span class="meta">.1</span>:<span class="number">631</span>           <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>:*               LISTEN     </div><div class="line">tcp6       <span class="number">0</span>      <span class="number">0</span> ::<span class="number">1</span>:<span class="number">631</span>                 :::*                    LISTEN</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="推流本地视频文件"><a href="#推流本地视频文件" class="headerlink" title="推流本地视频文件"></a>推流本地视频文件</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas@ubuntu:~$ ffmpeg -re -<span class="selector-tag">i</span> <span class="string">"/home/tamas/Desktop/silence.mp4"</span> -vcodec libx264 -vprofile baseline -acodec aac  -ar <span class="number">44100</span> -strict -<span class="number">2</span> -ac <span class="number">1</span> -f flv -s <span class="number">1280</span>x720 -<span class="selector-tag">q</span> <span class="number">10</span> rtmp:<span class="comment">//localhost:1935/hls/demo</span></div></pre></td></tr></table></figure>
-<p>现在就可以播放了，播放地址是<code>http://localhost/hls/demo.m3u8</code></p>
-<h3 id="播放网络视频流"><a href="#播放网络视频流" class="headerlink" title="播放网络视频流"></a>播放网络视频流</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:</span><span class="variable">$ </span>ffplay <span class="symbol">http:</span>/<span class="regexp">/localhost/hls</span><span class="regexp">/demo.m3u8</span></div></pre></td></tr></table></figure>
-<p><img src="http://blogstatic.folkcat.com/20161222_live_play.png-mid" alt=""></p>
-<p>参考<a href="http://blog.csdn.net/gubenpeiyuan/article/details/38089013" target="_blank" rel="external">http://blog.csdn.net/gubenpeiyuan/article/details/38089013</a></p>
+<h3 id="推流HLS本地视频文件"><a href="#推流HLS本地视频文件" class="headerlink" title="推流HLS本地视频文件"></a>推流HLS本地视频文件</h3><ul>
+<li><p>推流</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas@ubuntu:~$ ffmpeg -re -<span class="selector-tag">i</span> <span class="string">"/home/tamas/Desktop/silence.mp4"</span> -vcodec libx264 -vprofile baseline -acodec aac  -ar <span class="number">44100</span> -strict -<span class="number">2</span> -ac <span class="number">1</span> -f flv -s <span class="number">1280</span>x720 -<span class="selector-tag">q</span> <span class="number">10</span> rtmp:<span class="comment">//localhost:1935/hls/demo</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>现在就可以播放了，播放地址是<code>http://localhost/hls/demo.m3u8</code></p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tamas<span class="variable">@ubuntu</span><span class="symbol">:</span><span class="variable">$ </span>ffplay <span class="symbol">http:</span>/<span class="regexp">/localhost/hls</span><span class="regexp">/demo.m3u8</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://blogstatic.folkcat.com/20161222_live_play.png-large" alt=""></p>
+<h3 id="推流RTMP本地视频流"><a href="#推流RTMP本地视频流" class="headerlink" title="推流RTMP本地视频流"></a>推流RTMP本地视频流</h3><ul>
+<li><p>推流</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ffmpeg -re -<span class="selector-tag">i</span> ~/Desktop/silence<span class="selector-class">.mp4</span> -vcodec copy -f flv -<span class="selector-tag">b</span> <span class="number">20000000</span> rtmp:<span class="comment">//localhost/myapp/test1</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>播放</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ffplay rtmp:<span class="regexp">//</span>localhost<span class="regexp">/myapp/</span>test1</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://7xo0xk.com1.z0.glb.clouddn.com/20161222_live_play_2.png-large" alt=""></p>
+<p>参考<a href="http://redstarofsleep.iteye.com/blog/2123752" target="_blank" rel="external">http://redstarofsleep.iteye.com/blog/2123752</a></p>
 
       
     </div>
@@ -484,7 +499,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu下Nginx-RTMP-搭建直播服务器"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu下Nginx RTMP 搭建直播服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备ffmpeg"><span class="nav-number">1.0.1.</span> <span class="nav-text">准备ffmpeg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备源码"><span class="nav-number">1.0.2.</span> <span class="nav-text">准备源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译Nginx"><span class="nav-number">1.0.3.</span> <span class="nav-text">编译Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Nginx"><span class="nav-number">1.0.4.</span> <span class="nav-text">配置Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Nginx"><span class="nav-number">1.0.5.</span> <span class="nav-text">启动Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查Nginx是否启动成功"><span class="nav-number">1.0.6.</span> <span class="nav-text">检查Nginx是否启动成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推流本地视频文件"><span class="nav-number">1.0.7.</span> <span class="nav-text">推流本地视频文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#播放网络视频流"><span class="nav-number">1.0.8.</span> <span class="nav-text">播放网络视频流</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu下Nginx-RTMP-搭建直播服务器"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu下Nginx RTMP 搭建直播服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备ffmpeg"><span class="nav-number">1.0.1.</span> <span class="nav-text">准备ffmpeg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备源码"><span class="nav-number">1.0.2.</span> <span class="nav-text">准备源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译Nginx"><span class="nav-number">1.0.3.</span> <span class="nav-text">编译Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Nginx"><span class="nav-number">1.0.4.</span> <span class="nav-text">配置Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Nginx"><span class="nav-number">1.0.5.</span> <span class="nav-text">启动Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查Nginx是否启动成功"><span class="nav-number">1.0.6.</span> <span class="nav-text">检查Nginx是否启动成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推流HLS本地视频文件"><span class="nav-number">1.0.7.</span> <span class="nav-text">推流HLS本地视频文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推流RTMP本地视频流"><span class="nav-number">1.0.8.</span> <span class="nav-text">推流RTMP本地视频流</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
